@@ -16,11 +16,11 @@ import org.json.simple.parser.ParseException;
 //inizio sviluppo classe che permette il download del file tsv
 
 public class Download{
-    public static List<Azienda> Aziende;
+    private static List<Azienda> Aziende;
     public Download(){
         String name_file="dataset.tsv";
         //if(Files.exists(Paths.get(name_file)); //il metodo exist mi controlla che il file non sia già presente nella cartella poichè in quel caso non dovrei fare il download
-        Aziende=Parsing(name_file);                  //effettuo il parsing sul file
+        //Aziende=Parsing(name_file);                  //effettuo il parsing sul file
 		//else{
             try{
                 String url="http://data.europa.eu/euodp/data/api/3/action/package_show?id=KEQ1ryI277JtmzoN6ThqQ";
@@ -65,6 +65,10 @@ public class Download{
                 e.printStackTrace();}
            // parsing(name_file);
            // metadata=new Metadata();
+        }
+
+        public static List<Azienda> getAziende(){
+            return Aziende;
         }
 
         public static void download(String url, String NameFile) throws Exception {

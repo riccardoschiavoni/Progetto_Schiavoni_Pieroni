@@ -29,7 +29,7 @@ public  class Controllo {
     @GetMapping("/cercaValori")
     public Map<List<Double>,Object> getStatistiche(@RequestParam(value="campo",defaultValue = "")String Campo){
         if(!Campo.equals("")){
-            return returnstat(Download.Aziende, Campo);
+            return returnstat(Download.getAziende(), Campo);
         }
         else throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Insert a value...");
     }
@@ -39,7 +39,7 @@ public  class Controllo {
         Map<Object, Object> m=new HashMap<>();
         m.put("anno considerato",anno);
         if(anno<2018&&anno>1989){
-            m=Yearstatic(Download.Aziende,anno);
+            m=Yearstatic(Download.getAziende(),anno);
             return m;
         }
         else throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Insert a year between 1990 and 2017...");
@@ -48,11 +48,11 @@ public  class Controllo {
     @PostMapping("/FiltraValori")
     public Map<String,Object> retVal(@RequestBody FiltriNum body){
         if((body.value instanceof Integer)&&(body.field.equals("anno"))){
-            return FiltroAnno(body.operator,(Integer)body.value,Download.Aziende);
+            return FiltroAnno(body.operator,(Integer)body.value,Download.getAziende());
         }
         else{
             if((body.value instanceof Double)&&(body.field.equals("anno"))){
-                return FiltroAnno(body.operator,(Double)body.value,Download.Aziende);
+                return FiltroAnno(body.operator,(Double)body.value,Download.getAziende());
             }
             if(body.field.equals("anno")) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Insert the field anno and the year integer value or a double value...");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Insert anno...");
@@ -64,7 +64,7 @@ public  class Controllo {
     public Map<String,Object> retCamp(@RequestBody FiltriCampi body){
         if((body.field.equals("plants")||body.field.equals("operator")||body.field.equals("nrg_ball")||body.field.equals("siec")||body.field.equals("unit")||body.field.equals("geo"))!=true)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Insert an appropiate field...");
-        return FiltroCampo(body.field,body.operator,(String)body.value,Download.Aziende);
+        return FiltroCampo(body.field,body.operator,(String)body.value,Download.getAziende());
     }
 
 

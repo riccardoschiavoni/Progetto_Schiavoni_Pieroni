@@ -49,8 +49,8 @@ public abstract class Statistiche {
     }
 
 
-    public static Map<List<Double>,String> returnstat(List<Azienda> lista,String Campo){
-        Map<List<Double>,String> map=new HashMap<>();
+    public static Map<List<Double>,Object> returnstat(List<Azienda> lista,String Campo){
+        Map<List<Double>,Object> map=new HashMap<>();
         int i=0;
         for(Azienda o1: lista){
             if(o1.get_plants ().equals(Campo)||o1.get_operator().equals(Campo)||o1.get_nrg_ball().equals(Campo)||o1.get_siec ().equals(Campo)||o1.get_unit().equals(Campo)||o1.get_geo().equals(Campo)) {
@@ -71,4 +71,33 @@ public abstract class Statistiche {
         return map;
     }
 
+
+    public static Map<Object,Object> Yearstatic(List<Azienda> lista,Integer anno){
+        int i=0;
+        Map<Object,Object> ret=new HashMap<>();
+        List<Double> app=new ArrayList<>();
+        for(Azienda o: lista){
+            for(Double o1:o.get_time()){
+                if(2017-i==anno) app.add(o1);
+                i++;
+            }
+        }
+        ret.put("somma",sum(app));
+        ret.put("deviazione standard",dev_std(app));
+        ret.put("massimo",max(app));
+        ret.put("minimo",min(app));
+        ret.put("lunghezza lista",count(app));
+        ret.put("media",avg(app));
+        return ret;
+    }
 }
+
+
+
+
+
+
+
+
+
+

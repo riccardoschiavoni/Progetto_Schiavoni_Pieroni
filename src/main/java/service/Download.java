@@ -5,7 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.lang.Throwable;
+import java.util.List;
 
+import modello.Azienda;
 import org.json.simple.JSONArray;       //abbiamo importato le classi per la gestione json
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -14,10 +16,11 @@ import org.json.simple.parser.ParseException;
 //inizio sviluppo classe che permette il download del file tsv
 
 public class Download{
+    public static List<Azienda> Aziende;
     public Download(){
         String name_file="dataset.tsv";
         //if(Files.exists(Paths.get(name_file)); //il metodo exist mi controlla che il file non sia già presente nella cartella poichè in quel caso non dovrei fare il download
-        //parsing(name_file);                  //effettuo il parsing sul file
+        Aziende=Parsing(name_file);                  //effettuo il parsing sul file
 		//else{
             try{
                 String url="http://data.europa.eu/euodp/data/api/3/action/package_show?id=KEQ1ryI277JtmzoN6ThqQ";

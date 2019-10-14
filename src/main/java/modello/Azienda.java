@@ -45,8 +45,11 @@ public class Azienda {
     public List<Double> get_time (){
         return time;
     }
+
     @Override
     public String toString(){
-        return "plants: "+ get_plants() + "\noperator: " + get_operator() + "\nnrg_ball:" + get_nrg_ball() +"\nsiec:" + get_siec() + "\nget_unit: " + get_unit()  + "\nget_geo: " + get_geo() + "\nget_time: " ;
+        return "plants: "+ get_plants() + "\noperator: " + get_operator() + "\nnrg_ball:" + get_nrg_ball() +"\nsiec:" + get_siec() + "\nget_unit: " + get_unit()  + "\nget_geo: " + get_geo();
     }
+
+
 }

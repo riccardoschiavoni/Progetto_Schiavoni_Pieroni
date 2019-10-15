@@ -2,6 +2,8 @@ package controller;
 import static service.FiltriNum.*;
 import static service.FiltriCampi.*;
 import static service.Statistiche.*;
+
+import modello.Azienda;
 import service.Download;
 import service.Filtri;
 import service.FiltriCampi;
@@ -17,13 +19,25 @@ import service.Download;
 
 @RestController
 public  class Controllo {
-    private Download service;
-    @Autowired //dependency injection
-    public Controllo() {
-        service = new Download();
+   /* @GetMapping("/operatori")
+    public Map<String,String> op(){
+        Map<String,String> map=new HashMap<>();
+        map.put("operatori","filtri numerici");
+        map.put("%in","resituisce il valore passato come parametro e dove si trova");
+        map.put("%not","restituisce tutti i dati tranne il valore passato come parametro");
+        map.put("%gte","restituisce tutti i campi con valore maggiore di quello passato");
+        map.put("gt","restituisce tutti i campi con valore maggiore di quello passato");
+        map.put("it","restituisce tutti i campi con valore maggiore di quello passato");
+        map.put("ite","restituisce tutti i campi con valore maggiore di quello passato");
+        return map;
     }
 
-
+    @GetMapping("/data")
+    public List<Azienda> ret(){
+        return Download.getAziende();
+    }
+    @GetMapping("/anni")
+    @GetMapping("/campi")*/
 
 
     @GetMapping("/cercaValori")

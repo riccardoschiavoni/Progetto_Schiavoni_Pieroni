@@ -1,34 +1,35 @@
-package controller;
+package com.project.progOgg;
 import static service.FiltriNum.*;
 import static service.FiltriCampi.*;
 import static service.Statistiche.*;
 
 import modello.Azienda;
 import service.Download;
-import service.Filtri;
 import service.FiltriCampi;
 import service.FiltriNum;
 import java.util.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import service.Download;
-
-
 @RestController
-public  class Controllo {
-   /* @GetMapping("/operatori")
+
+
+public class Controller{
+
+    @GetMapping("/operatori")
     public Map<String,String> op(){
         Map<String,String> map=new HashMap<>();
-        map.put("operatori","filtri numerici");
-        map.put("%in","resituisce il valore passato come parametro e dove si trova");
+        map.put("operatorinum","filtri numerici");
+        map.put("%in per num","resituisce il valore passato come parametro e dove si trova");
         map.put("%not","restituisce tutti i dati tranne il valore passato come parametro");
-        map.put("%gte","restituisce tutti i campi con valore maggiore di quello passato");
+        map.put("%gte","restituisce tutti i campi con valore maggiore-uguale di quello passato");
         map.put("gt","restituisce tutti i campi con valore maggiore di quello passato");
-        map.put("it","restituisce tutti i campi con valore maggiore di quello passato");
-        map.put("ite","restituisce tutti i campi con valore maggiore di quello passato");
+        map.put("it","restituisce tutti i campi con valore minore di quello passato");
+        map.put("ite","restituisce tutti i campi con valore minore-uguale di quello passato");
+        map.put("operatori","filtri per i campi");
+        map.put("%in","resituisce il valore passato come parametro e dove si trova");
+        map.put("%nin","restituisce tutti i dati tranne il valore passato come parametro");
         return map;
     }
 
@@ -36,8 +37,21 @@ public  class Controllo {
     public List<Azienda> ret(){
         return Download.getAziende();
     }
+
     @GetMapping("/anni")
-    @GetMapping("/campi")*/
+    public Map<String,Integer> anni(){
+        Map<String,Integer> map=new HashMap<>();
+        int i=2017;
+        for(;i>1989;i--)
+            map.put("anno",i);
+        return map;
+    }
+
+    @GetMapping("/campi")
+    public Map<String,String> campi(){
+        Map<String,String> map=new HashMap<>();
+        return map;
+    }
 
 
     @GetMapping("/cercaValori")

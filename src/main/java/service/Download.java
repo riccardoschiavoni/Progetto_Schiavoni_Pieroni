@@ -2,13 +2,11 @@ package service;
 import java.io.*;  //importo tutti i metodi della classe io che mi serviranno in seguito
 import java.net.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.lang.Throwable;
 import java.util.*;
 
 import modello.Azienda;
-import org.json.simple.JSONArray;       //abbiamo importato le classi per la gestione json
+import org.json.simple.JSONArray;       //importazione classi per la gestione json
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -18,7 +16,7 @@ import org.json.simple.parser.ParseException;
 public class Download {
     private static List<Azienda> Aziende;
 
-    public Download() {
+    public Download() throws IOException {
         String name_file = "dataset.tsv";
         if(Files.exists(Paths.get(name_file))) //il metodo exist mi controlla che il file non sia già presente nella cartella poichè in quel caso non dovrei fare il download
         Aziende=Parsing(name_file);                //effettuo il parsing sul file
@@ -42,7 +40,7 @@ public class Download {
                 }
 
 
-                //ho letto il file ora devo importarlo come oggetto
+                // lettura del file che ora deve essere importato come oggetto
                 JSONObject obj = (JSONObject) JSONValue.parseWithException(String.valueOf(data));    //creazione dell'oggetto jason(collezione di 0 più coppie nome valore). data ha dentro i dati letti
                 JSONObject objI = (JSONObject) (obj.get("result"));                  //get prendi i valori associati alla chiave result e resources
                 JSONArray objA = (JSONArray) (objI.get("resources"));                //jasonarray è una collezione ordinata di valori
@@ -66,7 +64,7 @@ public class Download {
             e.printStackTrace();
         }
         Aziende=Parsing(name_file);
-        // metadata=new Metadata();
+        //new Metadati(name_file);
     }}
 
     public static List<Azienda> getAziende() {
@@ -96,17 +94,18 @@ public class Download {
     //       copia il file letto in apertura(in) in Paths.get(fileName):questo metodo richiama la cartella del progetto e copia il file con il nome filename
 
     public List<Azienda> Parsing(String name_file) {
-        final String TAB_DELIMITER = " ";
+        final String TAB_DELIMITER = "\t" ;
         List<Azienda> Aziende = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(name_file))) {
-            String line=br.readLine();
+            String line;
+            br.readLine();
             while ((line = br.readLine()) != null) {
-                line=line.replace(","," ");
-                line=line.replace(";","0");
+                line=line.replace(",",TAB_DELIMITER);
+                line=line.replace(":","0");
                 String[] values = line.split(TAB_DELIMITER);
-                int i=6;
+                int i;
                 List<Double> app=new ArrayList<>();
-                for(;i<34;i++){
+                for(i=6;i<values.length;i++){
                     app.add((Double.parseDouble(values[i])));
                 }
                 Aziende.add(new Azienda (values[0], values[1], values[2], values[3], values[4], values[5], app));

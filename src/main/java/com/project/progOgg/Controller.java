@@ -24,9 +24,9 @@ public class Controller{
         map.put("%in per num","resituisce il valore passato come parametro e dove si trova");
         map.put("%not","restituisce tutti i dati tranne il valore passato come parametro");
         map.put("%gte","restituisce tutti i campi con valore maggiore-uguale di quello passato");
-        map.put("gt","restituisce tutti i campi con valore maggiore di quello passato");
-        map.put("it","restituisce tutti i campi con valore minore di quello passato");
-        map.put("ite","restituisce tutti i campi con valore minore-uguale di quello passato");
+        map.put("%gt","restituisce tutti i campi con valore maggiore di quello passato");
+        map.put("%it","restituisce tutti i campi con valore minore di quello passato");
+        map.put("%ite","restituisce tutti i campi con valore minore-uguale di quello passato");
         map.put("operatori","filtri per i campi");
         map.put("%in","resituisce il valore passato come parametro e dove si trova");
         map.put("%nin","restituisce tutti i dati tranne il valore passato come parametro");
@@ -47,14 +47,8 @@ public class Controller{
         return map;
     }
 
-    @GetMapping("/campi")
-    public Map<String,String> campi(){
-        Map<String,String> map=new HashMap<>();
-        return map;
-    }
 
-
-    @GetMapping("/cercaValori")
+    @GetMapping("/cercaValori")//ritorna le statistiche di una data azienda su tutti gli anni
     public Map<List<Double>,Object> getStatistiche(@RequestParam(value="campo",defaultValue = "")String Campo){
         if(!Campo.equals("")){
             return returnstat(Download.getAziende(), Campo);

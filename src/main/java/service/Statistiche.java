@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import modello.Azienda;
 
 public abstract class Statistiche {
-    public static double avg(List<Double> listaVal) {
+    public static double avg(List<Double> listaVal) {//metodo per il calcolo della media
         return sum(listaVal) / listaVal.size();
     }
 
@@ -16,7 +16,7 @@ public abstract class Statistiche {
             if (n < min) min = n;
         }
         return min;
-    }
+    }//metodo per il calcolo del minimo
 
     public static double max(List<Double> listaVal) {
         double max;
@@ -25,7 +25,7 @@ public abstract class Statistiche {
             if (n > max) max = n;
         }
         return max;
-    }
+    }//metodo per il calcolo del massimo
 
     public static double dev_std(List<Double> listaVal) {
         double avg = avg(listaVal);
@@ -34,7 +34,7 @@ public abstract class Statistiche {
             var += (Math.pow(n - avg, 2) / 18);
         }
         return Math.sqrt(var);
-    }
+    }//metodo per il calcolo della deviazione standard
 
     public static Double sum(List<Double> listaVal) {
         double somma = 0;
@@ -42,16 +42,16 @@ public abstract class Statistiche {
             somma += n;
         }
         return somma;
-    }
+    }//metodo per il calcolo della somma
 
     public static double count(List<Double> listaVal) {
         return listaVal.size();
-    }
+    }//metodo per il calcolo della lunghezza della lista
 
 
-    public static Map<List<Double>,Object> returnstat(List<Azienda> lista,String Campo){
+    public static Map<List<Double>,Object> returnstat(List<Azienda> lista,String Campo){ //ritorna le statistiche relative ad un campo
         Map<List<Double>,Object> map=new HashMap<>();
-        int i=0;
+        int i=0;                                                                        //inizializzo un contatore che mi servirà per differenziare le keys delle mappe
         for(Azienda o1: lista){
             if(o1.get_plants ().equals(Campo)||o1.get_operator().equals(Campo)||o1.get_nrg_ball().equals(Campo)||o1.get_siec ().equals(Campo)||o1.get_unit().equals(Campo)||o1.get_geo().equals(Campo)) {
                 List<Double> vet = new ArrayList<>();

@@ -40,7 +40,7 @@ GET:
 	-/metadata:stampa i metadata 
 POST:
 
-	-/FiltraValori:in base all'operatore inserito e al valore numerico inserito restituise la lista filtrata:con valore intero 			       verranno effettuati filtri sugli anni, mentre con valore double verranno effettuali filtri sui valori
+	-/FiltraValori:in base all'operatore inserito e al valore numerico inserito restituise la lista filtrata:con valore intero verranno effettuati filtri sugli anni, mentre con valore double verranno effettuali filtri sui valori
 	-/FiltraCampi:in base all'operatore inserito e al valore del campo inserito restituisce la lista filtrata
 
 N.B. Entrambe le richieste POST ricevono in input un body in formato JSON ove le chiavi sono field operator e value

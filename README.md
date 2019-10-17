@@ -1,5 +1,6 @@
 # Progetto_Schiavoni_Pieroni
    
+## (qualora non si dovesse visionare correttamente il progetto nella sezione del master andare sulla branch feature)
 Il progetto in esame si occupa della gestione di un dataset in formato tsv attraverso il salvataggio di questo 
 in una classe modellante ben definita di cui verrà esaurientemente discusso in seguito. Il programma interagirà poi con l'utente mediante un server web locale avviato da un framework appositamente pensato per java di nome Spring. In tal modo l'utente potrà effettuare richieste GET e POST: con get come verrà mostrato in seguito l'utente dovrà inserire appositi parametri messi a disposizione proprio dal programma sotto opportune tracce. Allo stesso modo lavorerà POST solo che invece di aspettare parametri dovrà 
 essere inserito un body. A prescindere dalle richieste verranno restituiti dati sotto forma di jason cioè descritti da due campi:chiave e valore.
@@ -47,10 +48,8 @@ N.B. Entrambe le richieste POST ricevono in input un body in formato JSON ove le
 
 
 ## ESEMPI
-Di seguito verranno riportati i link di collegamento con le stamp degli esempi:
+
+Nella relativa cartella esempi sono riportate delle immagini raffiguranti esecuzioni del processo dal software Postman
 
 ## UML
-
-[Al presente link abbiamo il diagramma delle sequenze](../UML/Diagramma delle sequenze)
-[Al presente link abbiamo il diagramma delle classi](../UML/Diagramma delle classi)
-[Al presente link abbiamo il diagramma d'uso](../UML/Diagramma de'uso)
+I diagrammi delle sequenze, delle classi e d'uso sono nella relativa cartella UML

@@ -10,13 +10,13 @@ public class FiltriNum extends Filtri{
             map.put("l'operatore o l'anno considerato non è valido ", Operator+value);
             return map;
         }
-        else switch (Operator) {
+        else switch (Operator) {//gestisce i vari casi di inserimento degli operatori
             case "$in":{
                 Vector<Double> vet = new Vector();
                 for (Azienda o : list) {
-                    int i = 0;
+                    int i = 0;//contatore che serve per cambiare l'anno
                     for (Double o1 : o.get_time()) {
-                        if (2017 - i == value) vet.add(o1);
+                        if (2017-i == value.intValue()) vet.add(o1);
                         i++;
                     }
                     map.put(o.toString(), vet.get(i));
@@ -82,7 +82,7 @@ public class FiltriNum extends Filtri{
         }
     }
 
-    public static Map<String,Object> FiltroAnno(String Operator,Double value,List<Azienda> list) {
+    public static Map<String,Object> FiltroAnno(String Operator,Double value,List<Azienda> list) {//gestisce il filtro sui valori double dell'energia prodotta
         Map<String, Object> map = new HashMap<>();
         if (Filtri.ContrOP(Operator) != true) {
             map.put("l'operatore considerato non è valido ", Operator);

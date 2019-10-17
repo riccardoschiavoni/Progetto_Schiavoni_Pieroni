@@ -13,19 +13,18 @@ public class FiltriCampi extends Filtri {
             map.put("l'operatore considerato non è valido ", operator);
             return map;
         }
+        else{
         switch(field){
             case "plants":
                 switch (operator){
                     case "$in":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if(o.get_plants().equals(value)) ret.put(o.toString(),o.get_time());
+                            if(o.get_plants().equals(value)) map.put(o.toString(),o.get_time());
                         }
                         return map;}
                     case "$nin":{
-                         Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if((o.get_plants().equals(value))!=true) ret.put(o.toString(),o.get_time());
+                            if((o.get_plants().equals(value))!=true) map.put(o.toString(),o.get_time());
                         }
                         return map;}
 
@@ -33,15 +32,13 @@ public class FiltriCampi extends Filtri {
             case "operator":
                 switch (operator){
                     case "$in":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if(o.get_operator().equals(value)) ret.put(o.toString(),o.get_time());
+                            if(o.get_operator().equals(value)) map.put(o.toString(),o.get_time());
                         }
                         return map;}
                     case "$nin":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if((o.get_operator().equals(value))!=true) ret.put(o.toString(),o.get_time());
+                            if((o.get_operator().equals(value))!=true) map.put(o.toString(),o.get_time());
                         }
                         return map;}
 
@@ -49,15 +46,13 @@ public class FiltriCampi extends Filtri {
             case "nrg_ball":
                 switch (operator){
                     case "$in":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if(o.get_nrg_ball().equals(value)) ret.put(o.toString(),o.get_time());
+                            if(o.get_nrg_ball().equals(value)) map.put(o.toString(),o.get_time());
                         }
                         return map;}
                     case "$nin":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if((o.get_nrg_ball().equals(value))!=true) ret.put(o.toString(),o.get_time());
+                            if((o.get_nrg_ball().equals(value))!=true) map.put(o.toString(),o.get_time());
                         }
                         return map;}
 
@@ -65,15 +60,13 @@ public class FiltriCampi extends Filtri {
             case "siec":
                 switch (operator){
                     case "$in":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if(o.get_siec().equals(value)) ret.put(o.toString(),o.get_time());
+                            if(o.get_siec().equals(value)) map.put(o.toString(),o.get_time());
                         }
                         return map;}
                     case "$nin":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if((o.get_siec().equals(value))!=true) ret.put(o.toString(),o.get_time());
+                            if((o.get_siec().equals(value))!=true) map.put(o.toString(),o.get_time());
                         }
                         return map;}
 
@@ -81,15 +74,13 @@ public class FiltriCampi extends Filtri {
             case "unit":
                 switch (operator){
                     case "$in":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if(o.get_unit().equals(value)) ret.put(o.toString(),o.get_time());
+                            if(o.get_unit().equals(value)) map.put(o.toString(),o.get_time());
                         }
                         return map;}
                     case "$nin":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if((o.get_unit().equals(value))!=true) ret.put(o.toString(),o.get_time());
+                            if((o.get_unit().equals(value))!=true) map.put(o.toString(),o.get_time());
                         }
                         return map;}
 
@@ -97,22 +88,19 @@ public class FiltriCampi extends Filtri {
             case "geo":
                 switch (operator){
                     case "$in":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if(o.get_geo().equals(value)) ret.put(o.toString(),o.get_time());
+                            if(o.get_geo().equals(value)) map.put(o.toString(),o.get_time());
                         }
                         return map;}
                     case "$nin":{
-                        Map<String,Object> ret=new HashMap<>();
                         for (Azienda o : list) {
-                            if((o.get_geo().equals(value))!=true) ret.put(o.toString(),o.get_time());
+                            if((o.get_geo().equals(value))!=true) map.put(o.toString(),o.get_time());
                         }
                         return map;}
-                    default:return map;
                 }
             default:return map;
         }
 
 
     }
-}
+}}

@@ -48,7 +48,7 @@ public class Azienda {
 
     @Override
     public String toString(){
-        return "plants: "+ get_plants() + "\noperator: " + get_operator() + "\nnrg_ball:" + get_nrg_ball() +"\nsiec:" + get_siec() + "\nget_unit: " + get_unit()  + "\nget_geo: " + get_geo();
+        return "plants: "+ get_plants() +" operator: " + get_operator() +" nrg_ball:" + get_nrg_ball() +" siec:" + get_siec() + " get_unit: " + get_unit()  +" get_geo: " + get_geo();
     }
 
 

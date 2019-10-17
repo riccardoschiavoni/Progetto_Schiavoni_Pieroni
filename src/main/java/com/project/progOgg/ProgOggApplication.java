@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ProgOggApplication {
 
 	public static void main(String[] args) throws IOException {
-	new Download();
+	new Download(); //chiamo il costruttore della classe download per il download del file ed il parsing
 	SpringApplication.run(ProgOggApplication.class, args);
 	}
 

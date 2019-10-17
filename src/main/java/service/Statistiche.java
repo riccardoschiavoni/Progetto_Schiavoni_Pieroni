@@ -9,7 +9,7 @@ public abstract class Statistiche {
         return sum(listaVal) / listaVal.size();
     }
 
-    public static Double min(List<Double> listaVal) {
+    public static double min(List<Double> listaVal) {
         double min;
         min = (double) listaVal.get(0);
         for (double n : listaVal) {
@@ -36,7 +36,7 @@ public abstract class Statistiche {
         return Math.sqrt(var);
     }//metodo per il calcolo della deviazione standard
 
-    public static Double sum(List<Double> listaVal) {
+    public static double sum(List<Double> listaVal) {
         double somma = 0;
         for (double n : listaVal) {
             somma += n;
@@ -51,7 +51,7 @@ public abstract class Statistiche {
 
     public static Map<List<Double>,Object> returnstat(List<Azienda> lista,String Campo){ //ritorna le statistiche relative ad un campo
         Map<List<Double>,Object> map=new HashMap<>();
-        int i=0;                                                                        //inizializzo un contatore che mi servirà per differenziare le keys delle mappe
+        int i=0;                                                                        //inizializzo un contatore servirà per differenziare le keys delle mappe
         for(Azienda o1: lista){
             if(o1.get_plants ().equals(Campo)||o1.get_operator().equals(Campo)||o1.get_nrg_ball().equals(Campo)||o1.get_siec ().equals(Campo)||o1.get_unit().equals(Campo)||o1.get_geo().equals(Campo)) {
                 List<Double> vet = new ArrayList<>();
@@ -63,7 +63,7 @@ public abstract class Statistiche {
                 vet.add(count(o1.get_time()));
                 vet.add((double) i);
                 map.put(o1.get_time(), "valori per i diversi anni "+i);
-                map.put(vet, "somma deviazione standard, massimo, minimo, media, lunghezza lista "+i+",numero di occorrenze del valore "+Campo);
+                map.put(vet, "somma deviazione standard, massimo, minimo, media, lunghezza lista ,numero di occorrenze del valore "+Campo+ "numero"+i);
                 i++;
             }
         }
@@ -73,12 +73,14 @@ public abstract class Statistiche {
 
 
     public static Map<Object,Object> Yearstatic(List<Azienda> lista,Integer anno){
-        int i=0;
         Map<Object,Object> ret=new HashMap<>();
         List<Double> app=new ArrayList<>();
+
         for(Azienda o: lista){
+            int i=0;
             for(Double o1:o.get_time()){
-                if(2017-i==anno) app.add(o1);
+                int ref=anno.intValue();
+                if((2017-i)==ref) app.add(o1);
                 i++;
             }
         }

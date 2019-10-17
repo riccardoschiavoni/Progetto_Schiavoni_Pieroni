@@ -17,8 +17,10 @@ public class Download {
 
     public Download() throws IOException {
         String name_file = "dataset.tsv"; //do il nome al dataset
-        if(Files.exists(Paths.get(name_file))) //il metodo exist mi controlla che il file non sia già presente nella cartella poichè in quel caso non dovrei fare il download
+        if(Files.exists(Paths.get(name_file))) {//il metodo exist mi controlla che il file non sia già presente nella cartella poichè in quel caso non dovrei fare il download
         Aziende=Parsing(name_file);                //effettuo il parsing sul file
+
+        new Metadati(name_file);}
         else{
         try {
             String url = "http://data.europa.eu/euodp/data/api/3/action/package_show?id=KEQ1ryI277JtmzoN6ThqQ"; //metodi relativi al download: definisco l'url di ingresso
@@ -63,7 +65,8 @@ public class Download {
             e.printStackTrace();
         }
         Aziende=Parsing(name_file);
-        //new Metadati(name_file);
+
+            new Metadati(name_file);
     }}
 
     public static List<Azienda> getAziende() {

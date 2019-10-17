@@ -49,3 +49,8 @@ N.B. Entrambe le richieste POST ricevono in input un body in formato JSON ove le
 ## ESEMPI
 Di seguito verranno riportati i link di collegamento con le stamp degli esempi:
 
+## UML
+
+[Al presente link abbiamo il diagramma delle sequenze](/UML/Diagramma delle sequenze)
+[Al presente link abbiamo il diagramma delle classi](/UML/Diagramma delle classi)
+[Al presente link abbiamo il diagramma d'uso](/UML/Diagramma de'uso)

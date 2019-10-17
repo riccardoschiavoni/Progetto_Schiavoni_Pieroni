@@ -6,6 +6,7 @@ public class FiltriNum extends Filtri{
     public Number value;
     public static Map<String,Object> FiltroAnno(String Operator,Integer value,List<Azienda> list) {
         Map<String, Object> map = new HashMap<>();
+        int n=0;
         if (Filtri.ContrOP(Operator) != true||value<1990||value>2017) {
             map.put("l'operatore o l'anno considerato non è valido ", Operator+value);
             return map;
@@ -19,7 +20,8 @@ public class FiltriNum extends Filtri{
                         if (2017-i == value.intValue()) vet.add(o1);
                         i++;
                     }
-                    map.put(o.toString(), vet.get(i));
+                    map.put(o.toString(), vet.get(n));
+                    n++;
                     }
                 }
                 return map;
@@ -28,7 +30,7 @@ public class FiltriNum extends Filtri{
                     int i = 0;
                     Vector<Double> vet = new Vector();
                     for (Double o1 : o.get_time()) {
-                        if (2017 - i != value) vet.add(o1);
+                        if (2017 - i != value.intValue()) vet.add(o1);
                         i++;
                     }
                     map.put(o.toString(), vet);
@@ -39,7 +41,7 @@ public class FiltriNum extends Filtri{
                     int i = 0;
                     Vector<Double> vet = new Vector();
                     for (Double o1 : o.get_time()) {
-                        if (2017 - i > value) vet.add(o1);
+                        if (2017 - i > value.intValue()) vet.add(o1);
                         i++;
                     }
                     map.put(o.toString(), vet);
@@ -50,7 +52,7 @@ public class FiltriNum extends Filtri{
                     int i = 0;
                     Vector<Double> vet = new Vector();
                     for (Double o1 : o.get_time()) {
-                        if (2017 - i >= value) vet.add(o1);
+                        if (2017 - i >= value.intValue()) vet.add(o1);
                         i++;
                     }
                     map.put(o.toString(), vet);
@@ -61,7 +63,7 @@ public class FiltriNum extends Filtri{
                     int i = 0;
                     Vector<Double> vet = new Vector();
                     for (Double o1 : o.get_time()) {
-                        if (2017 - i < value) vet.add(o1);
+                        if (2017 - i < value.intValue()) vet.add(o1);
                         i++;
                     }
                     map.put(o.toString(), vet);
@@ -72,7 +74,7 @@ public class FiltriNum extends Filtri{
                     int i = 0;
                     Vector<Double> vet = new Vector();
                     for (Double o1 : o.get_time()) {
-                        if (2017 - i <= value) vet.add(o1);
+                        if (2017 - i <= value.intValue()) vet.add(o1);
                         i++;
                     }
                     map.put(o.toString(), vet);
@@ -96,7 +98,7 @@ public class FiltriNum extends Filtri{
                 for (Azienda o : list) {
                     int i=0;
                     for (Double o1 : o.get_time()) {
-                        if (o1.doubleValue()==value){
+                        if (o1.doubleValue()==value.doubleValue()){
                             anni.add(2017-i);
                             flad=true;
                             flag=true;
@@ -106,7 +108,7 @@ public class FiltriNum extends Filtri{
                         i++;
                     }
                 }
-                if(flad)return map;
+                if(flad)return map;//flad mi dice se la mappa è piena cioè se esiste o meno il valore in input
                 else {
                     map.put("non esiste il valore digitato " ,value);
                     return map;}}
@@ -119,7 +121,7 @@ public class FiltriNum extends Filtri{
                 for (Azienda o : list) {
                     int i=0;
                     for (Double o1 : o.get_time()) {
-                        if (o1.doubleValue()>value){
+                        if (o1.doubleValue()>value.doubleValue()){
                             valori.add(o1.doubleValue());
                             flad=true;
                             flag=true;
@@ -141,7 +143,7 @@ public class FiltriNum extends Filtri{
                 for (Azienda o : list) {
                     int i=0;
                     for (Double o1 : o.get_time()) {
-                        if (o1.doubleValue()>=value){
+                        if (o1.doubleValue()>=value.doubleValue()){
                             valori.add(o1.doubleValue());
                             flad=true;
                             flag=true;
@@ -162,7 +164,7 @@ public class FiltriNum extends Filtri{
                 for (Azienda o : list) {
                     int i=0;
                     for (Double o1 : o.get_time()) {
-                        if (o1.doubleValue()<value){
+                        if (o1.doubleValue()<value.doubleValue()){
                             valori.add(o1.doubleValue());
                             flad=true;
                             flag=true;
@@ -183,7 +185,7 @@ public class FiltriNum extends Filtri{
                 for (Azienda o : list) {
                     int i=0;
                     for (Double o1 : o.get_time()) {
-                        if (o1.doubleValue()<=value){
+                        if (o1.doubleValue()<=value.doubleValue()){
                             valori.add(o1.doubleValue());
                             flad=true;
                             flag=true;

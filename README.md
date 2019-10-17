@@ -9,11 +9,14 @@ Il tsv preso in esame descrive la produzione di energia da diferse fonti energet
 ## STRUTTURA
 
 Il nucleo del progetto è diviso in 4 packages:
+	
 	-c.project.progOgg:
 		-ProgOggApplication:possiede al suo interno il main()
 		-controllo:è la classe che gestisce i filtri e le statistiche:gestisce cioè le interazione con l'utente
 	-modello:
-		-Azienda:è il modello che descrive la situazione precedentemente esposta attraverso 7 attributi:6 stringhe che 					desccrivono il plants, l'operator, il bilancio energetico(ciò che viene prodotto),il sinc(cioè da cosa deriva la 			 produzione), la unit(unità di misura) e geo(la località a livello europeo). Come ultima istanza che descrive il 			 modello adottato prevede una lista di double che presenta la produzione dagli anni 1990 al 2017.
+		
+		-Azienda:è il modello che descrive la situazione precedentemente esposta attraverso 7 attributi:6 stringhe che desccrivono il plants, l'operator, il bilancio energetico(ciò che viene prodotto),il sinc(cioè da cosa deriva la produzione), la unit(unità di misura) e geo(la località a livello europeo). Come ultima istanza che descrive il modello adottato prevede una lista di double che presenta la produzione dagli anni 1990 al 2017.
+	
 	-service:
 		-Download:contiene la parte relativa al download del file TSV e al parsing del file 
 		-Filtri assieme a FiltriCampi e FiltriNum:gestiscono i filtri del dataset
@@ -28,6 +31,7 @@ dopodichè esegue il parsing del file:va a creare cioè una lista di oggetti del
 i singoli campi del file; a quel punto aspetta le interazioni con l'utente. Egli può attraverso l'utilizzo del framework Spring sul 
 server web locale sulla porta 8080 tramite richieste GET e POST:
 GET:
+
 	-/cercaValori:ritorna le statistiche di una data azienda su tutti gli anni
 	-/statisticheAnnuali:ritorna le statistiche su un dato anno di tutte le aziende
 	-/operatori:restituisce gli operatori logici e condizionali che si possono usare 
@@ -35,6 +39,7 @@ GET:
 	-/anni:stampa gli anni presi in considerazione
 	-/metadata:stampa i metadata 
 POST:
+
 	-/FiltraValori:in base all'operatore inserito e al valore numerico inserito restituise la lista filtrata:con valore intero 			       verranno effettuati filtri sugli anni, mentre con valore double verranno effettuali filtri sui valori
 	-/FiltraCampi:in base all'operatore inserito e al valore del campo inserito restituisce la lista filtrata
 
